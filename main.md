@@ -20,7 +20,22 @@
 
 # Library Guides
 
+## Css
+### Flex align
+- justify-content along primary axis
+- align-items along secondary axis
+
+
 ## React
+
+### When to use what
+- Data
+    - If you need to save state while programming is running, `useState()`
+    - If the data needs to be reloaded on restarting the program, use local storage.
+    - If the data needs to be accessible in multiple components, use context.
+- Functions
+    - If it does not use any hooks, make it a regular function
+    - If it uses hooks like `useState`, make it a hook
 
 ### Use state function input
 - If there is an expensive computation to get the initial value of a state, you can input the function so that it is only called once to get the initial state.
