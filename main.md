@@ -2,23 +2,18 @@
 
 ## Temp
 
-
-# How To
-
-# Language Guides
-
 ## JS
 
 ### Export and import modules
 [Stack overflow answer](https://stackoverflow.com/questions/33611812/export-const-vs-export-default-in-es6)
 
+[Complete ES6 Export Explanation](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export)
+
+- `export { functionName }` is equalent to `export const function functionName() { implementation }`
+
 ### General
 
 - `==` checks if values are equal. `===` checks if values are equal and of same type.
-
-## Solidity
-
-# Library Guides
 
 ## Css
 ### Flex align
@@ -62,11 +57,6 @@ import { ReactComponent as Logo } from 'path/to/logo.svg'
 - 401: Unauthorized
 - 404: Not found
 
-## Electron
-
-### Throwing errors
-- Never throw errors from backend to frontend. Instead catch them and return an error message.
-    - In the frontend, check error message and throw an error.
 
 ### Backend request guide
 - `get` for read operations
@@ -74,5 +64,23 @@ import { ReactComponent as Logo } from 'path/to/logo.svg'
   - Query for optional inputs
 - `post` for update operations and hiding inputs
 
+## Electron
+
+### Throwing errors
+- Never throw errors from backend to frontend. Instead catch them and return an error message.
+    - In the frontend, check error message and throw an error.
+
+### Loading local resources
+- Electron by default allows local resources to be accessed by render processes only when their html files are loaded from local sources with the `file://` protocol for security reasons.
+
+### Context isolation, sandboxing and preload
+- When context isolation and sandboxing is enabled (by default), the render process will not won't have Node.js enviornment initialized.
+- The only way for it to call Node functions (from main process) is to use IPC from the preload script.
+- The preload script also won't be able to use everything in Node, only a subset of functions and not even other custom scripts written by you.
+    - So the only way to execute anything from preload is to send messages to the main process using IPC from preload. And then provide these functions that use IPC as an API to the renderer.
 ## D3 Js
 
+## Digital Ocean
+
+### Setup production server
+[Guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-20-04)
