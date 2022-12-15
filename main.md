@@ -41,6 +41,25 @@
 
 ## React
 
+### Optimization
+Details can be found [here](https://www.developerway.com/posts/react-re-renders-guide)
+- A rerender is when the render function of a component is called. A DOM update is when the real DOM is changed.
+    - Once rendering is done, react compares the virtual DOM to the real DOM and only updates the parts that have changed.
+    - Just because a component rerenders doesn't mean the real DOM is changed.
+    - There is no need to optimize this since it is taken care of by react.
+- Rerenders can be optimized.
+- A rerender is caused under the following conditions
+    - A component is rerendered when its state changes.
+    - All the children of the component are rerendered when the component rerenders.
+    - When context changes all components that use the context rerender.
+    - When hooks change the component that has the hook is rerendered.
+    - A component does `not` rerender because its props change. It just happens to rerender since props change when the state from which the prop is derived changes and that triggers a rerender of the parent which rerenders the children.
+- A rerender of a parent rerenders all children even if the props of some children have not changed. This is because react cannot assume that the children are pure components.
+    - A pure component is one which does not have side effects and the same props always result in the same output.
+- Therefore keep the state as close as possible to the component that uses it to prevent unnecessary render of its parents other children.
+- A rerender can also be prevented if the child component is a prop (through props or children) and not a regular child.
+- A rerender can also be prevented by memoizing the component. Then react only rerenders if the memoized components props change.
+
 ### Execution order
 - Use effect runs after the first render and every time the state is updated.
 ### When to use what
