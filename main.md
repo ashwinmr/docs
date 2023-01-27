@@ -37,6 +37,8 @@
 - Container should have rows
 - Rows should have columns
 - Columns can have stuff or more rows.
+- `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
+    - Rows are flex-rows by default.
 - When you want to `flex-grow-1` a row, it will only work if it's parent is a `d-flex flex-column`
 
 ## React
@@ -59,6 +61,11 @@ Details can be found [here](https://www.developerway.com/posts/react-re-renders-
 - Therefore keep the state as close as possible to the component that uses it to prevent unnecessary render of its parents other children.
 - A rerender can also be prevented if the child component is a prop (through props or children) and not a regular child.
 - A rerender can also be prevented by memoizing the component. Then react only rerenders if the memoized components props change.
+
+### Update state
+- Do not mutate state for updating. Instead clone and set state.
+    - If you mutate that state and use the mutated object to set state, react might think that the object has not changed since the reference remains the same. Rerenders might not happen and cause strange bugs.
+- Set state is asynchronous. Do not depends on it being run before code that follows it.
 
 ### Execution order
 - Use effect runs after the first render and every time the state is updated.
