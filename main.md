@@ -30,6 +30,12 @@
 - justify-content along primary axis
 - align-items along secondary axis
 
+### Flex scroll
+- If a parent without a fixed size has a child that needs to scroll
+    - The parent has to have display `flex`
+    - The parent has to have overflow hidden
+    - The child has to have size as `100%` of parent.
+
 ## Bootstrap
 
 ### Flex
@@ -58,9 +64,10 @@ Details can be found [here](https://www.developerway.com/posts/react-re-renders-
     - A component does `not` rerender because its props change. It just happens to rerender since props change when the state from which the prop is derived changes and that triggers a rerender of the parent which rerenders the children.
 - A rerender of a parent rerenders all children even if the props of some children have not changed. This is because react cannot assume that the children are pure components.
     - A pure component is one which does not have side effects and the same props always result in the same output.
-- Therefore keep the state as close as possible to the component that uses it to prevent unnecessary render of its parents other children.
+- Therefore keep the state as close as possible to the component that uses it to prevent unnecessary render of its siblings.
 - A rerender can also be prevented if the child component is a prop (through props or children) and not a regular child.
 - A rerender can also be prevented by memoizing the component. Then react only rerenders if the memoized components props change.
+    - In this case the component will rerender if its function props dont use `useCallback`.
 
 ### Update state
 - Do not mutate state for updating. Instead clone and set state.
