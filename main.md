@@ -70,7 +70,7 @@ Details can be found [here](https://www.developerway.com/posts/react-re-renders-
 - A rerender can also be prevented if the child component is a prop (through props or children) and not a regular child.
 - A rerender can also be prevented by memoizing the component. Then react only rerenders if the memoized components props change.
     - In this case the component will rerender if its function props dont use `useCallback`, since a new function is created each time.
-    - The memoization will also fail if the memoized component has a child component since that will be a new object each time. To prevent this, even the child component has to be memoized.
+    - The memoization will also fail if the memoized component has a child component since that will be a new object each time. To prevent this, even the child component has to be memoized but by using `usememo` (not `memo`).
     - Memoization can also fail if a callback has a dependancy that changed. So it is good to create callbacks with as few dependancies as possible. One way to do this is to use the `setState` function of a dependancy to get the current values of a state instead of directly listing the state as a dependancy.
 
 ### Update state
