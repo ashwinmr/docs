@@ -42,7 +42,9 @@
 - Start with a container
 - Container should have rows
 - Rows should have columns
-- Columns can have stuff or more rows.
+- Columns can have stuff.
+- Columns should have containers if they need rows again.
+    - Otherwise the rows have to be margin 0 and cols have to be padding zero.
 - `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
     - Rows are flex-rows by default.
 - When you want to `flex-grow-1` a row, it will only work if it's parent is a `d-flex flex-column`
@@ -67,7 +69,9 @@ Details can be found [here](https://www.developerway.com/posts/react-re-renders-
 - Therefore keep the state as close as possible to the component that uses it to prevent unnecessary render of its siblings.
 - A rerender can also be prevented if the child component is a prop (through props or children) and not a regular child.
 - A rerender can also be prevented by memoizing the component. Then react only rerenders if the memoized components props change.
-    - In this case the component will rerender if its function props dont use `useCallback`.
+    - In this case the component will rerender if its function props dont use `useCallback`, since a new function is created each time.
+    - The memoization will also fail if the memoized component has a child component since that will be a new object each time. To prevent this, even the child component has to be memoized.
+    - Memoization can also fail if a callback has a dependancy that changed. So it is good to create callbacks with as few dependancies as possible. One way to do this is to use the `setState` function of a dependancy to get the current values of a state instead of directly listing the state as a dependancy.
 
 ### Update state
 - Do not mutate state for updating. Instead clone and set state.
