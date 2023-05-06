@@ -73,6 +73,9 @@ Details can be found [here](https://www.developerway.com/posts/react-re-renders-
     - The memoization will also fail if the memoized component has a child component since that will be a new object each time. To prevent this, the child component has to be memoized but by using `usememo` (not `memo`).
     - Memoization can also fail if a callback has a dependancy that changed. So it is good to create callbacks with as few dependancies as possible. One way to do this is to use the `setState` function of a dependancy to get the current values of a state instead of directly listing the state as a dependancy.
 
+### Dependencies
+- When creating a `useCallback` function, make sure to also pass in any functions it uses as dependancy (unless the funtion is a `setState`).
+    - If this is not done the callback will be calling functions that might have been replaced in the next render. It will still be using the old function that may be using old state.
 ### Update state
 - Do not mutate state for updating. Instead clone and set state.
     - If you mutate that state and use the mutated object to set state, react might think that the object has not changed since the reference remains the same. Rerenders might not happen and cause strange bugs.
