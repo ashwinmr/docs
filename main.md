@@ -38,16 +38,24 @@
 
 ## Bootstrap
 
-### Flex
+### Layout
 - Start with a container
 - Container should have rows
-- Rows should have columns
+- Rows should have columns.
 - Columns can have stuff.
 - Columns should have containers if they need rows again.
     - Otherwise the rows have to be margin 0 and cols have to be padding zero.
 - `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
     - Rows are flex-rows by default.
 - When you want to `flex-grow-1` a row, it will only work if it's parent is a `d-flex flex-column`
+
+### Responsiveness
+- You can use breakpoints on rows and cols to make layout responsive
+    - When columns take up too much space in a row they wrap.
+    - Use gutters `gy-3` to add spacing when a row wraps.
+- Use `xs='auto'` on a row or col to make columns take size of content.
+    - You can also use a horizontal stack, but stacks don't wrap when you zoom in.
+- Use divs to reset flex and other effects
 
 ## React
 
@@ -173,6 +181,12 @@ Details can be found [here](https://www.pluralsight.com/guides/how-to-load-svg-w
 ## Visx
 
 - Linepaths by default have a transparent fill which captures pointer events. Set the fill to `none` to prevent this.
+
+## Nextjs
+
+### Styling
+- Style in css or scss files are applied site wide.
+- Styles in .module.css or .module.scss can be applied only where imported.
 
 ## Digital Ocean
 
