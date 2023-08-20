@@ -45,9 +45,9 @@
 - Columns can have stuff.
 - Columns should have containers if they need rows again.
     - Otherwise the rows have to be margin 0 and cols have to be padding zero.
-- `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
-    - Rows are flex-rows by default.
-- When you want to `flex-grow-1` a row, it will only work if it's parent is a `d-flex flex-column`
+- Rows are flex rows by default. Columns and Containers do not have flex by default.
+    - `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
+    - There is no `justify-self` you have to use `my-auto` on the child.
 
 ### Responsiveness
 - You can use breakpoints on rows and cols to make layout responsive
