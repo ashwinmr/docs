@@ -42,12 +42,13 @@
 - Start with a container
 - Container should have rows
 - Rows should have columns.
-- Columns can have stuff.
-- Columns should have containers if they need rows again.
+- Columns can have stuff and rows
+- Rows should have containers if they need rows again.
     - Otherwise the rows have to be margin 0 and cols have to be padding zero.
 - Rows are flex rows by default. Columns and Containers do not have flex by default.
     - `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
-    - There is no `justify-self` you have to use `my-auto` on the child.
+- If you want to center content in columns you have to use `display:flex, flexDirection:column` and then use `justifyContent:center` on the parent or `my-auto` on the child.
+    - There is no `justify-self` in flex.
 
 ### Responsiveness
 - You can use breakpoints on rows and cols to make layout responsive
