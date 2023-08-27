@@ -43,12 +43,17 @@
 - Container should have rows
 - Rows should have columns.
 - Columns can have stuff and rows
-- Rows should have containers if they need rows again.
+- Rows should have columns or containers if they need rows again.
     - Otherwise the rows have to be margin 0 and cols have to be padding zero.
 - Rows are flex rows by default. Columns and Containers do not have flex by default.
     - `flex-grow-1` will grow in the direction of the parent flex (`flex-column` or `flex-row`)
-- If you want to center content in columns you have to use `display:flex, flexDirection:column` and then use `justifyContent:center` on the parent or `my-auto` on the child.
+- If you want to center content in columns you have to use `display:flex, flexDirection:column` and then use `justifyContent:center` on the parent (column) or `my-auto` on the child.
     - There is no `justify-self` in flex.
+- If you want a child to how scrolling inside a parent that does not scroll
+    - The parent should have a set height (that can at least be derived from it's parent through flex).
+        - Note that `Row` in bootstrap has `flexWrap: wrap` by default. This prevents the row from having a set height. You have to change this to `flexWrap: nowrap`. This may need to be done for all parent rows.
+    - And then it should have `overflow:hidden`
+    - The child should then have `overflow:auto`
 
 ### Responsiveness
 - You can use breakpoints on rows and cols to make layout responsive
